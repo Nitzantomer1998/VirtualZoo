@@ -16,7 +16,7 @@ public class Carnivore implements IDiet {
 
     /**
      * The constructor of the Carnivore object, Sets the attributes of the object
-     * Note : The object itself has no field, but he used as one
+     * Note: The object itself has no field, but he used as one
      *
      * @see animals.Animal
      */
@@ -25,7 +25,6 @@ public class Carnivore implements IDiet {
 
     /**
      * Getting a food, and check if Carnivore can eat it
-     * Notes : Carnivore may eat only MEAT
      *
      * @param food is a String representing the food type (food type define in EFoodType)
      * @see food.EFoodType
