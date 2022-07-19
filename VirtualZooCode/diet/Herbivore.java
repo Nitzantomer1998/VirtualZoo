@@ -16,7 +16,7 @@ import food.IEdible;
 public class Herbivore implements IDiet {
 
     /**
-     * The constructor of the Herbivore object, Sets the attributes of the object
+     * The constructor of the Herbivore object, Sets the fields of the object
      * Note: The object itself has no field, but he used as one
      *
      * @see animals.Animal
