@@ -17,7 +17,7 @@ public class Point {
 
 
     /**
-     * The constructor of the Point object, Sets the attributes of the object
+     * The constructor of the Point object, Sets the fields of the object
      *
      * @param x is an Integer representing the location on axis X
      * @param y is an Integer representing the location on axis Y
@@ -31,7 +31,7 @@ public class Point {
     /**
      * Getter methods for the fields of the object / class
      *
-     * @return The wanted attribute
+     * @return The wanted field
      */
     public int getX() { return this.x; }
     public int getY() { return this.y; }
