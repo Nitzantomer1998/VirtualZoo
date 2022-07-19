@@ -46,14 +46,6 @@ public class Mobile extends Observable implements ILocatable {
 
 
     /**
-     * Getting a distance that the object made, and adding it to the object distance data
-     *
-     * @param distance Distance that the object made
-     */
-    public void addToTotalDistance(double distance) { this.totalDistance = this.totalDistance + distance; }
-
-
-    /**
      * Getting a Point object and calculate the distance between em
      *
      * @param location is a Point representing location on the axis
@@ -81,4 +73,13 @@ public class Mobile extends Observable implements ILocatable {
 
         return distanceTraveled;
     }
+
+
+    /**
+     * Getting a distance that the object made, and adding it to the object distance data
+     * Note: Helpful method in order to update the attribute totaldDistance of the object
+     *
+     * @param distance Distance that the object made
+     */
+    private void addToTotalDistance(double distance) { this.totalDistance = this.totalDistance + distance; }
 }
