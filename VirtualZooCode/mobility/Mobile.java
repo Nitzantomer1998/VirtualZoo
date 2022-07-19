@@ -17,7 +17,7 @@ public class Mobile extends Observable implements ILocatable {
 
 
     /**
-     * The constructor of the Mobile object, Sets the attributes of the object
+     * The constructor of the Mobile object, Sets the fields of the object
      *
      * @param location is a Point representing location on the axis
      */
@@ -28,34 +28,19 @@ public class Mobile extends Observable implements ILocatable {
 
 
     /**
-     * Setter method for the attribute location
-     *
-     * @param newLocation is a Point representing object location on the axis
+     * Setter methods for the fields of the object / class
      */
     @Override
     public void setLocation(Point newLocation) { this.location = new Point(newLocation.getX(), newLocation.getY()); }
 
 
     /**
-     * Getter method for the attribute location
+     * Getter methods for the fields of the object / class
      *
-     * @return The object location on the axis
+     * @return The wanted field
      */
     @Override
     public Point getLocation() { return this.location; }
-
-
-    /**
-     * Getting a Point object and calculate the distance between em
-     *
-     * @param location is a Point representing location on the axis
-     * @return The distance between the two objects
-     */
-    public double calcDistance(Point location) {
-        double distanceX = Math.pow(this.location.getX() - location.getX(), 2);
-        double distanceY = Math.pow(this.location.getY() - location.getY(), 2);
-        return Math.pow(distanceX + distanceY, 0.5);
-    }
 
 
     /**
@@ -76,10 +61,12 @@ public class Mobile extends Observable implements ILocatable {
 
 
     /**
-     * Getting a distance that the object made, and adding it to the object distance data
-     * Note: Helpful method in order to update the attribute totaldDistance of the object
-     *
-     * @param distance Distance that the object made
+     * Helpful methods for the move method
      */
     private void addToTotalDistance(double distance) { this.totalDistance = this.totalDistance + distance; }
+    private double calcDistance(Point location) {
+        double distanceX = Math.pow(this.location.getX() - location.getX(), 2);
+        double distanceY = Math.pow(this.location.getY() - location.getY(), 2);
+        return Math.pow(distanceX + distanceY, 0.5);
+    }
 }
