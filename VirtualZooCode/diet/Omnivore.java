@@ -20,7 +20,7 @@ public class Omnivore implements IDiet {
 
 
     /**
-     * The constructor of the Omnivore object, Sets the attributes of the object
+     * The constructor of the Omnivore object, Sets the fields of the object
      * Note: The object itself used as field
      *
      * @see animals.Animal
