@@ -16,6 +16,14 @@ import java.io.File;
 import java.io.IOException;
 
 
+/**
+ * Abstract class that defines the common attributes to all the animals,
+ * inherit from Mobile, and implement Runnable, IEdible, IDrawable, ICloneable
+ *
+ * @version 2020.3.3
+ * @author Nitzan Tomer
+ * @see Runnable,mobility.Mobile,food.IEdible,graphics.IDrawable,DesignPatterns.ICloneable
+ */
 public abstract class Animal extends Mobile implements Runnable, IEdible, IDrawable, ICloneable {
 
     private final String name;
@@ -33,6 +41,18 @@ public abstract class Animal extends Mobile implements Runnable, IEdible, IDrawa
     private BufferedImage leftImage;
 
 
+    /**
+     * The constructor of the Animal object, Sets the attributes of the object
+     *
+     * @param name is a String representing the name of the animal
+     * @param location is a Point representing the location of the animal
+     * @param size is an Integer representing the size of the animal
+     * @param horizontalSpeed is an Integer representing the Horizontal speed of the animal
+     * @param verticalSpeed is an Integer representing the Vertical speed of the animal
+     * @param color is a String representing the color of the animal
+     * @param weight is a Double representing the weight of the animal
+     * @param diet is a IDiet representing the Type of the animal
+     */
     public Animal(String name, Point location, double size, int horizontalSpeed, int verticalSpeed, String color, double weight, IDiet diet) {
         super(location);
 
@@ -51,6 +71,9 @@ public abstract class Animal extends Mobile implements Runnable, IEdible, IDrawa
     }
 
 
+    /**
+     * Setter methods for the fields of the object / class
+     */
     public void setThreadSuspended() {
         if (!this.threadSuspended)
             synchronized (this) {
@@ -70,6 +93,11 @@ public abstract class Animal extends Mobile implements Runnable, IEdible, IDrawa
     }
 
 
+    /**
+     * Getter methods for the fields of the object / class
+     *
+     * @return The wanted field
+     */
     public String getName() { return this.name; }
     public double getSize() { return this.size; }
     public int getHorizontalSpeed() { return this.horizontalSpeed; }
@@ -86,10 +114,22 @@ public abstract class Animal extends Mobile implements Runnable, IEdible, IDrawa
         return EFoodType.MEAT;
     }
 
-
+    /**
+     * Method to check is the thread is suspended
+     *
+     * @return true if suspended, else false
+     */
     public boolean isThreadSuspended() { return this.threadSuspended; }
 
 
+    /**
+     * Calls the eat method (from interface IDiet) with the diet attribute
+     * which returns the weight gained form the action (if greater than zero, he ate successful)
+     * if successful : updating the new weight of the animal (see calculation), else don't
+     *
+     * @param food is the food that the animal will attempt to eat
+     * @see food.IEdible,diet.IDiet
+     */
     public void eat(IEdible food) {
         double gainWeight = diet.eat(this, food);
 
@@ -101,6 +141,12 @@ public abstract class Animal extends Mobile implements Runnable, IEdible, IDrawa
     }
 
 
+    /**
+     * Moving the animal to a new location, calculate the weight she lost in the way, lastly update her current stats
+     *
+     * @param location is a Point representing location on the axis
+     * @return The distance the Animal went
+     */
     @Override
     public double move(Point location) {
         double distanceTraveled = super.move(location);
@@ -118,6 +164,9 @@ public abstract class Animal extends Mobile implements Runnable, IEdible, IDrawa
     }
 
 
+    /**
+     * Method for running a thread code
+     */
     @Override
     public synchronized void run() {
         while(true) {
@@ -166,6 +215,11 @@ public abstract class Animal extends Mobile implements Runnable, IEdible, IDrawa
     }
 
 
+    /**
+     * Method for creating deep copy of an object
+     *
+     * @return The deep copy object
+     */
     @Override
     public Animal Clone() {
         Animal animal = new DietFactory().getFactory(getDiet().getClass().getSimpleName()).createAnimal(this.getClass().getSimpleName(), this.name, this.size, this.horizontalSpeed, this.verticalSpeed, this.color);
@@ -181,6 +235,11 @@ public abstract class Animal extends Mobile implements Runnable, IEdible, IDrawa
     }
 
 
+    /**
+     * Loading an image for our project, from the project folder
+     *
+     * @param imageName is Image representing the image of the object
+     */
     @Override
     public void loadImages(String imageName) {
         try {
@@ -191,6 +250,11 @@ public abstract class Animal extends Mobile implements Runnable, IEdible, IDrawa
     }
 
 
+    /**
+     * Drawing the image into the frame g, with specific dimensions
+     *
+     * @param g is a Graphic representing a frame
+     */
     @Override
     public void drawObject (Graphics g) {
         int width = (int)Math.sqrt(this.weight) + 20;
@@ -203,9 +267,15 @@ public abstract class Animal extends Mobile implements Runnable, IEdible, IDrawa
     }
 
 
+    /**
+     * Helpful methods for updating the object fields
+     */
     private void updateWeight(double distanceTraveled) { this.weight = this.weight - (distanceTraveled * this.weight * 0.00025); }
     private void updateSize() { this.size = this.weight / sizeScale(); }
 
-    
+
+    /**
+     * abstract method in order to set the weight accordingly to the animal (Animal size : Animal weight)
+     */
     protected abstract double sizeScale();
 }
