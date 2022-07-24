@@ -10,6 +10,13 @@ import java.awt.*;
 import java.lang.*;
 
 
+/**
+ * a Class that defines GUI Dialog in order to add an animal to our zoo program, inherit from JDialog
+ *
+ * @version 2020.3.3
+ * @author Nitzan Tomer
+ * @see JDialog
+ */
 public class AddAnimalDialog extends JDialog {
 
     private final Vector<Animal> animalVector;
@@ -30,6 +37,11 @@ public class AddAnimalDialog extends JDialog {
     private final JLabel verSpeedLabel;
 
 
+    /**
+     * The constructor of the AddAnimalDialog object, add animal to our zoo using GUI JDialog
+     *
+     * @param animalVector is a Vector representing all the animals in the zoo
+     */
     public AddAnimalDialog(Vector<Animal> animalVector) {
         this.setTitle("Creating An Animal");
         this.setLayout(new GridLayout(0,2, 30,20));
@@ -100,6 +112,9 @@ public class AddAnimalDialog extends JDialog {
     }
 
 
+    /**
+     * Helpful methods in order to update the JDialog accordingly to the action preformed by the user
+     */
     private void updateAnimalLabel() { this.chosenAnimalLabel.setText("Animal Type: " + this.animalTypeComboBox.getSelectedItem()); }
     private void updateColorLabel() { this.chosenColorLabel.setText("Animal Color: " + this.animalColorComboBox.getSelectedItem()); }
     private void updateNameLabel() { this.animalNameLabel.setText("Animal Name: " + this.animalNameTextField.getText()); }
