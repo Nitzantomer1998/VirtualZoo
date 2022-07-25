@@ -7,6 +7,13 @@ import java.awt.*;
 import java.util.Vector;
 
 
+/**
+ * a Class that defines GUI Dialog in order to change animal color, inherit from JDialog
+ *
+ * @version 2020.3.3
+ * @author Nitzan Tomer
+ * @see JDialog
+ */
 public class ChangeColorDialog extends JDialog{
 
     private final Vector<Animal> animalVector;
@@ -16,6 +23,11 @@ public class ChangeColorDialog extends JDialog{
     private final JLabel chosenColorLabel;
 
 
+    /**
+     * The constructor of the ChangeColorDialog object, change animal color from our zoo using GUI JDialog
+     *
+     * @param animalVector is a Vector representing all the animals in the zoo
+     */
     public ChangeColorDialog(Vector<Animal> animalVector) {
         this.setTitle("Changing Animal Color");
         this.setLayout(new GridLayout(0,2, 30,20));
@@ -48,6 +60,9 @@ public class ChangeColorDialog extends JDialog{
     }
 
 
+    /**
+     * Helpful methods in order to update the JDialog accordingly to the action preformed by the user
+     */
     private void updateColorLabel() { this.chosenColorLabel.setText("Animal Color: " + this.animalColorComboBox.getSelectedItem()); }
     private void updateExistedAnimalComboBox() {
         this.chosenAnimalLabel.setText("Animal Name: " + this.existedAnimalComboBox.getSelectedItem());
