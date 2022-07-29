@@ -6,8 +6,20 @@ import java.awt.*;
 import java.util.Vector;
 
 
+/**
+ * a Class that defines a GUI frame which show all the information about the existed zoo animals, inherit from JFrame
+ *
+ * @version 2020.3.3
+ * @author Nitzan Tomer
+ * @see JFrame
+ */
 public class InfoAnimalFrame extends JFrame {
 
+    /**
+     * The constructor of the infoAnimalFrame object, show all the information about the zoo using GUI JFrame
+     *
+     * @param animalVector is a Vector representing all the animals in the zoo
+     */
     public InfoAnimalFrame (Vector<Animal> animalVector) {
         super("Zoo Information");
 
