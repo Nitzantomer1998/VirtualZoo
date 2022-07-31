@@ -4,8 +4,20 @@ import javax.swing.*;
 import java.awt.*;
 
 
+/**
+ * a Class that defines the GUI main frame of the program, inherit from JFrame
+ *
+ * @version 2020.3.3
+ * @author Nitzan Tomer
+ * @see JFrame
+ */
 public class ZooFrame extends JFrame {
 
+    /**
+     * The constructor of the ZooFrame object, Sets the fields of the object
+     * Note: ZooFrame is the main frame of the program
+     *
+     */
     public ZooFrame() {
         super("Zoo");
 
@@ -57,5 +69,10 @@ public class ZooFrame extends JFrame {
     }
 
 
+    /**
+     * The main method of the whole project
+     *
+     * @param args Possible arguments that may be passed
+     */
     public static void main(String[] args) { new ZooFrame(); }
 }
