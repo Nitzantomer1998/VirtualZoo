@@ -16,6 +16,13 @@ import java.util.Observer;
 import java.util.Vector;
 
 
+/**
+ * a Class that defines the GUI panels of the program, inherit from JPanel
+ *
+ * @version 2020.3.3
+ * @author Nitzan Tomer
+ * @see JPanel
+ */
 public class ZooPanel extends JPanel {
 
     private static volatile ZooPanel instance = null;
@@ -26,6 +33,10 @@ public class ZooPanel extends JPanel {
     private final Vector<Animal> animalVector;
 
 
+    /**
+     * The constructor of the ZooPanel object, Sets the fields of the object
+     * Note : ZooPanel contain two panels, one for control buttons, and the other for visual board
+     */
     private ZooPanel() {
         this.setLayout(new BorderLayout());
 
@@ -85,6 +96,13 @@ public class ZooPanel extends JPanel {
     }
 
 
+    /**
+     * Static method for ensuring there's maximum of one instance type of this class,
+     * If there's no instance it will create one, else it will return the existing instance,
+     * Note: Singleton DP + little tweaks
+     *
+     * @return Instance of this class
+     */
     public static ZooPanel getInstance() {
         if (ZooPanel.instance == null)
             synchronized (ZooPanel.class) {
@@ -96,14 +114,27 @@ public class ZooPanel extends JPanel {
     }
 
 
+    /**
+     * Getter methods for the fields of the object / class
+     *
+     * @return The wanted field
+     */
     public AvailableFood getAvailableFood() { return this.availableFood; }
     public ThreadPool getThreadPool() { return this.threadPool; }
     public Observer getController() { return this.controller; }
 
 
+    /**
+     * Boolean methods for checking the fields condition of the object / class
+     *
+     * @return true or false depend on the condition
+     */
     public boolean isAvailableFood() { return this.availableFood != null; }
 
 
+    /**
+     * Helpful methods in order to update our program accordingly to the action preformed by the user
+     */
     private void addAnimal() {
         if (this.animalVector.size() < 15)
             synchronized (this.animalVector) {
@@ -207,6 +238,11 @@ public class ZooPanel extends JPanel {
     }
 
 
+    /**
+     * Printing all the components to our frame
+     *
+     * @param g the graphics context.
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -219,6 +255,9 @@ public class ZooPanel extends JPanel {
     }
 
 
+    /**
+     * The controller for the program, follow after all the user actions and update the program accordingly
+     */
     public void manageZoo() {
         synchronized (this.animalVector) {
             for (int i = 0; i < Math.min(10, animalVector.size()); i++) {
