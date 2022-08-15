@@ -1,8 +1,8 @@
 package graphics;
 
-import DesignPatterns.Controller;
-import DesignPatterns.ThreadPool;
-import DesignPatterns.ZooMemento;
+import designPatterns.Controller;
+import designPatterns.ThreadPool;
+import designPatterns.ZooMemento;
 import animals.Animal;
 import foodSupply.AvailableFood;
 import foodSupply.Cabbage;
@@ -29,9 +29,8 @@ public class ZooPanel extends JPanel {
     private volatile AvailableFood availableFood;
     private final ThreadPool threadPool;
     private final Controller controller;
-    private final ArrayList<ZooMemento> mementoArrayList;
     private final Vector<Animal> animalVector;
-
+    private final ArrayList<ZooMemento> mementoArrayList;
 
     /**
      * The constructor of the ZooPanel object, Sets the fields of the object
