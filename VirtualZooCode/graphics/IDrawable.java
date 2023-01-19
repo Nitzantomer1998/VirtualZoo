@@ -11,7 +11,7 @@ import java.awt.*;
  */
 public interface IDrawable {
 
-    String PICTURE_PATH = System.getProperty("user.dir").concat("\\ProjectPictures\\");
+    String PICTURE_PATH = System.getProperty("user.dir").concat("\\ProjectPicture\\");
     void loadImages(String imageName);
     void drawObject (Graphics g);
 }
