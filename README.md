@@ -18,7 +18,7 @@
 <ol>
    <li>
       Clone or download the repository to your local machine
-      <pre>$ git clone https://github.com/Nitzantomer1998/VirtualZoo.git</pre>
+      <pre><code>git clone https://github.com/Nitzantomer1998/VirtualZoo.git</code></pre>
    </li>
    <li>Open the project in Intellij IDE</li>
    <li>Build and run the program</li>
